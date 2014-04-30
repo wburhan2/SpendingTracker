@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/cost"
+        android:text="Cost: $"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="40dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:background="@drawable/rounded_edges"
+        android:textColor="@color/white"
+        android:ems="8"
+        android:textSize="25sp"
+        android:id="@+id/cost_value"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/cost"
+        android:layout_alignBaseline="@+id/cost" />
+    
+    <TextView
+        android:id="@+id/tip_prct"
+        android:text="Tip %: "
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cost"
+        android:paddingTop="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:background="@drawable/rounded_edges"
+        android:textColor="@color/white"
+        android:ems="2"
+        android:textSize="25sp"
+        android:id="@+id/tip_pct_value"
+        android:layout_toRightOf="@+id/tip_prct"
+        android:layout_alignBaseline="@+id/tip_prct"
+        android:layout_below="@+id/cost_value"/>
+
+    <TextView
+        android:id="@+id/prct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="%"
+        android:layout_below="@+id/cost_value"
+        android:layout_toRightOf="@id/tip_pct_value"
+        android:layout_alignBaseline="@+id/tip_prct"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tip: "
+        android:textSize="25sp"
+        android:layout_below="@id/tip_prct"
+        android:paddingTop="50dp"/>
+
+    <TextView
+        android:id="@+id/tip_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_below="@+id/tip_pct_value"
+        android:layout_toRightOf="@+id/tip"
+        android:layout_alignBaseline="@+id/tip"
+        android:freezesText="true"
+        android:paddingTop="50dp"/>
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: "
+        android:textSize="25sp"
+        android:layout_below="@id/tip"
+        android:paddingTop="50dp"/>
+
+    <TextView
+        android:id="@+id/total_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_below="@+id/tip_value"
+        android:layout_toRightOf="@+id/total"
+        android:layout_alignBaseline="@+id/total"
+        android:freezesText="true"
+        android:paddingTop="50dp"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/calculate_tip"
+            android:text="@string/calculate"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/reset_tip"
+            android:text="@string/reset"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</RelativeLayout>
