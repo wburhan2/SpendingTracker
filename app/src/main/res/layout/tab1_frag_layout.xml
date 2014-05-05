@@ -54,7 +54,7 @@
         android:ems="2"
         android:textSize="@dimen/text_size"
         android:id="@+id/tip_pct_value"
-        android:layout_toLeftOf="@id/prct"
+        android:layout_toLeftOf="@+id/prct"
         android:layout_alignBaseline="@+id/tip_prct"/>
 
     <TextView

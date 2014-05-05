@@ -54,6 +54,7 @@
                         android:adjustViewBounds="true"
                         android:clickable="true"/>
                     <ImageView
+                        android:id="@+id/setting"
                         android:src="@drawable/gear"
                         android:background="@color/background"
                         android:layout_alignParentRight="true"

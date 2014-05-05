@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TabHost;
 
 import java.util.HashMap;
@@ -15,6 +16,8 @@ public class MainActivity extends FragmentActivity{
     private TabHost mTabHost;
     private HashMap mapTabInfo = new HashMap();
     private TabInfo mLastTab = null;
+    private ImageView mInfo;
+    private ImageView mSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,8 @@ public class MainActivity extends FragmentActivity{
         setContentView(R.layout.activity_main);
 
         initialiseTabHost(savedInstanceState);
+        initializeImageView();
+
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab")); //set the tab as per the saved state
         }
@@ -46,6 +51,24 @@ public class MainActivity extends FragmentActivity{
         myTabListener.onTabChanged("Tab1");
 
         mTabHost.setOnTabChangedListener(myTabListener);
+    }
+
+    private void initializeImageView() {
+        mInfo = (ImageView)findViewById(R.id.info);
+        mSetting = (ImageView)findViewById(R.id.setting);
+        mInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        mSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private static void addTab(MainActivity activity, TabHost tabHost, TabHost.TabSpec tabSpec, TabInfo tabInfo) {

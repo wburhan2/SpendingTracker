@@ -27,7 +27,7 @@
         android:textSize="@dimen/text_size"
         android:id="@+id/price_value"
         android:layout_alignBaseline="@id/original_price"
-        android:layout_alignRight="@id/disc_line"
+        android:layout_alignRight="@+id/disc_line"
         android:gravity="right"/>
     <TextView
         android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
         android:ems="2"
         android:textSize="@dimen/text_size"
         android:id="@+id/discount_pct_value"
-        android:layout_toLeftOf="@id/pct"
+        android:layout_toLeftOf="@+id/pct"
         android:layout_alignBaseline="@id/discount_pct"/>
 
     <TextView
@@ -65,7 +65,7 @@
         android:textSize="@dimen/text_size"
         android:text="%"
         android:layout_below="@id/original_price"
-        android:layout_alignRight="@id/disc_line"
+        android:layout_alignRight="@+id/disc_line"
         android:layout_alignBaseline="@id/discount_pct"
         android:gravity="right"/>
 
