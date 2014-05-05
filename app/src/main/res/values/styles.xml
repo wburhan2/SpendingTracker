@@ -5,5 +5,8 @@
         <item name="android:textColor">@color/white</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="SettingTheme" parent="android:Theme.Holo">
+        <item name="android:textColor">@color/white</item>
+    </style>
 
 </resources>

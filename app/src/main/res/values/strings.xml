@@ -9,5 +9,9 @@
     <string name="calculate">Calculate</string>
     <string name="reset">Reset</string>
     <string name="about">Spending Tracker V 0.7\nCopyright ©2014 Wilson Burhan\n\nWhat\'s new:\n\n-v0.7\n#Layout revamped.</string>
-
+    <string-array name="setting_array">
+        <item>Change Sales Tax</item>
+        <item>Feedback</item>
+        <item>Help</item>
+    </string-array>
 </resources>
