@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Wilson on 4/23/14.
@@ -101,6 +102,7 @@ public class Tab1Fragment extends Fragment {
                 mTip.setText("");
                 mTipTextView.setText("");
                 mTotalTextView.setText("");
+                Toast.makeText(view.getContext(), "Values has been reset", 3).show();
             }
         });
 

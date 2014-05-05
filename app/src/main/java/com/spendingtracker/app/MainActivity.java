@@ -1,5 +1,6 @@
 package com.spendingtracker.app;
 
+import android.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
@@ -60,6 +61,9 @@ public class MainActivity extends FragmentActivity{
             @Override
             public void onClick(View view) {
 
+                FragmentManager fm = getFragmentManager();
+                InfoDialogFragment fragment = new InfoDialogFragment();
+                fragment.show(fm, "InfoFragment");
             }
         });
 
