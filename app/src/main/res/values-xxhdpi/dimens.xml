@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size">25sp</dimen>
+    <dimen name="top_margin">40dp</dimen>
+    <dimen name="overall_layout__margin">70dp</dimen>
+    <dimen name="overall_discount_layout__margin">50dp</dimen>
+    <dimen name="tip_cost_margin">25dp</dimen>
+    <dimen name="most_margin">40dp</dimen>
+    <dimen name="total_margin">50dp</dimen>
+</resources>

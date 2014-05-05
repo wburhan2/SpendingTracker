@@ -1,12 +1,16 @@
 package com.spendingtracker.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,8 +28,8 @@ public class Tab1Fragment extends Fragment {
     private TextView mTotalTextView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
+                             final Bundle savedInstanceState) {
         if (container == null) {
             // We have different layouts, and in one of them this
             // fragment's containing frame doesn't exist.  The fragment
@@ -50,6 +54,18 @@ public class Tab1Fragment extends Fragment {
 
         mCost.addTextChangedListener(myTextWatcher);
         mTip.addTextChangedListener(myTextWatcher);
+        mTip.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_DONE) {
+                    mCalculate.performClick();
+                    InputMethodManager inputManager = (InputMethodManager)inflater.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    return true;
+                }
+                return false;
+            }
+        });
 
         mCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,8 +76,11 @@ public class Tab1Fragment extends Fragment {
                 String costText = mCost.getText().toString();
                 String tipText = mTip.getText().toString();
 
-                if (costText.isEmpty() || tipText.isEmpty())
+                if (costText.isEmpty() || tipText.isEmpty()) {
+                    mTipTextView.setText("");
+                    mTotalTextView.setText("");
                     return;
+                }
 
                 double costValue = Double.parseDouble(mCost.getText().toString());
                 double tipValue = Double.parseDouble(mTip.getText().toString());

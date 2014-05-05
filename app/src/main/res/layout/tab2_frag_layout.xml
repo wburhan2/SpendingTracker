@@ -4,102 +4,155 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+    android:layout_height="fill_parent">
 
+    <RelativeLayout
+        android:layout_marginLeft="@dimen/overall_discount_layout__margin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/overall_discount_layout__margin">
     <TextView
-        android:paddingTop="40dp"
+        android:layout_marginTop="@dimen/top_margin"
         android:id="@+id/original_price"
-        android:text="Original Price: $"
-        android:textSize="25sp"
+        android:text="Price:"
+        android:textSize="@dimen/text_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_edges"
-        android:ems="8"
-        android:textSize="25sp"
+        android:textColor="@color/edit_text_color"
+        android:ems="5"
+        android:textSize="@dimen/text_size"
         android:id="@+id/price_value"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/original_price"
-        android:layout_alignBaseline="@+id/original_price"/>
+        android:layout_alignBaseline="@id/original_price"
+        android:layout_alignRight="@id/disc_line"
+        android:gravity="right"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:text="$"
+        android:layout_alignBaseline="@id/original_price"
+        android:layout_toLeftOf="@id/price_value"/>
 
     <TextView
         android:id="@+id/discount_pct"
         android:text="Discount %: "
-        android:textSize="25sp"
+        android:textSize="@dimen/text_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/original_price"
-        android:paddingTop="10dp" />
+        android:layout_below="@id/original_price"
+        android:layout_marginTop="@dimen/tip_cost_margin"
+        android:layout_marginBottom="@dimen/tip_cost_margin"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_edges"
+        android:textColor="@color/edit_text_color"
         android:ems="2"
-        android:textSize="25sp"
+        android:textSize="@dimen/text_size"
         android:id="@+id/discount_pct_value"
-        android:layout_toRightOf="@+id/discount_pct"
-        android:layout_below="@+id/price_value"
-        android:layout_alignBaseline="@+id/discount_pct"/>
+        android:layout_toLeftOf="@id/pct"
+        android:layout_alignBaseline="@id/discount_pct"/>
 
     <TextView
+        android:id="@+id/pct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="@dimen/text_size"
         android:text="%"
-        android:layout_below="@+id/original_price"
-        android:layout_toRightOf="@id/discount_pct_value"
-        android:paddingTop="10dp"
-        android:layout_alignBaseline="@+id/discount_pct"/>
+        android:layout_below="@id/original_price"
+        android:layout_alignRight="@id/disc_line"
+        android:layout_alignBaseline="@id/discount_pct"
+        android:gravity="right"/>
+
+    <View
+        android:id="@+id/disc_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_below="@id/discount_pct"/>
 
     <TextView
         android:id="@+id/final_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Price after discount: "
-        android:textSize="25sp"
-        android:layout_below="@id/discount_pct"
-        android:paddingTop="50dp"/>
+        android:text="Subtotal: "
+        android:textSize="@dimen/text_size"
+        android:layout_below="@id/disc_line"
+        android:layout_marginTop="@dimen/tip_cost_margin"/>
 
     <TextView
         android:id="@+id/total_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:layout_below="@+id/discount_pct_value"
-        android:layout_toRightOf="@+id/final_price"
-        android:layout_alignBaseline="@+id/final_price"
+        android:textSize="@dimen/text_size"
+        android:layout_toRightOf="@id/final_price"
+        android:layout_alignBaseline="@id/final_price"
+        android:layout_alignRight="@id/disc_line"
         android:freezesText="true"
-        android:paddingTop="50dp"/>
+        android:gravity="right"/>
+
+    <TextView
+        android:id="@+id/tax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/final_price"
+        android:textSize="@dimen/text_size"
+        android:text="Tax"
+        android:layout_marginTop="@dimen/tip_cost_margin"/>
+    <TextView
+        android:id="@+id/tax_pct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tax"
+        android:textSize="@dimen/text_size"
+        android:text="(0%)"
+        android:layout_alignBaseline="@id/tax"
+        android:layout_marginLeft="@dimen/tip_cost_margin"
+        android:freezesText="true"/>
+    <TextView
+        android:id="@+id/tax_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tax"
+        android:layout_alignRight="@id/disc_line"
+        android:textSize="@dimen/text_size"
+        android:text="$0.00"
+        android:gravity="right"
+        android:freezesText="true"/>
+    <View
+        android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_below="@id/tax"
+        android:layout_marginTop="@dimen/most_margin"/>
 
     <TextView
         android:id="@+id/saved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You saved: "
-        android:textSize="25sp"
-        android:layout_below="@id/final_price"
-        android:paddingTop="50dp"/>
+        android:textSize="@dimen/text_size"
+        android:layout_below="@id/line"
+        android:layout_marginTop="@dimen/total_margin"/>
 
     <TextView
         android:id="@+id/saved_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="@dimen/text_size"
         android:textColor="@color/red"
-        android:layout_below="@+id/total_value"
-        android:layout_toRightOf="@+id/saved"
-        android:layout_alignBaseline="@+id/saved"
+        android:layout_toRightOf="@id/saved"
+        android:layout_alignBaseline="@id/saved"
         android:freezesText="true"
-        android:paddingTop="50dp"/>
-
+        android:layout_alignRight="@id/line"
+        android:gravity="right"/>
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -110,7 +163,6 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
-
         <Button
             android:id="@+id/reset_disc"
             android:text="@string/reset"
@@ -118,6 +170,4 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
     </LinearLayout>
-
-
 </RelativeLayout>
