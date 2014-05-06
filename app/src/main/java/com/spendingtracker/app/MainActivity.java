@@ -13,7 +13,7 @@ import android.widget.TabHost;
 
 import java.util.HashMap;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends FragmentActivity {
 
     private TabHost mTabHost;
     private HashMap mapTabInfo = new HashMap();
@@ -61,10 +61,9 @@ public class MainActivity extends FragmentActivity{
         mInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 FragmentManager fm = getSupportFragmentManager();
-                InfoDialogFragment fragment = new InfoDialogFragment();
-                fragment.show(fm, "InfoFragment");
+                TaxDialogFragment fragment = new TaxDialogFragment();
+                fragment.show(fm, "TaxFragment");
             }
         });
 

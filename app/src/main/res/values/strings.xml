@@ -2,15 +2,19 @@
 <resources>
 
     <string name="app_name">Spending Tracker</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="tab_1_display_name">Tip</string>
     <string name="tab_2_display_name">Discount</string>
     <string name="calculate">Calculate</string>
     <string name="reset">Reset</string>
-    <string name="about">Spending Tracker V 0.7\nCopyright ©2014 Wilson Burhan\n\nWhat\'s new:\n\n-v0.7\n#Layout revamped.</string>
+    <string name="sales_tax">Enter Sales Tax</string>
+    <string name="help">1. Input the value into both the Cost and Tip (Tip tab) or Price and Discount (Discount tab).\n\n
+                        2. Press calculate or the "Done" button on the soft keyboard to get the final price.\n\n
+                        3. The reset button is to reset the corresponding value of tab the reset button was clicked.\n\n
+                        4. The \'i\' button on the top left corner sets the sales tax of for the discount tab.\n\n\n
+                        Finally, but not least.. Any advise to make the app even better is always welcome! :) </string>
     <string-array name="setting_array">
-        <item>Change Sales Tax</item>
+        <item>About</item>
         <item>Feedback</item>
         <item>Help</item>
     </string-array>

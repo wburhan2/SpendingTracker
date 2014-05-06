@@ -16,10 +16,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  * Created by Wilson on 4/23/14.
  */
-public class Tab2Fragment extends Fragment {
+public class Tab2Fragment extends Fragment implements Observer{
 
     private Button mCalculate;
     private Button mReset;
@@ -27,22 +30,20 @@ public class Tab2Fragment extends Fragment {
     private EditText mDiscountView;
     private TextView mAfterDiscount;
     private TextView mSaved;
+    private TextView mTaxPct;
+    private TextView mTaxValue;
+    BaseApp mBase;
 
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         if (container == null) {
-            // We have different layouts, and in one of them this
-            // fragment's containing frame doesn't exist.  The fragment
-            // may still be created from its saved state, but there is
-            // no reason to try to create its view hierarchy because it
-            // won't be displayed.  Note this is not needed -- we could
-            // just run the code below, where we would create and return
-            // the view hierarchy; it would just never be used.
             return null;
         }
 
         final View v = inflater.inflate(R.layout.tab2_frag_layout, container, false);
         final MyTextWatcher myTextWatcher = new MyTextWatcher();
 
+        mBase = (BaseApp)getActivity().getApplication();
+        mBase.getObserver().addObserver(this);
         mCalculate = (Button)v.findViewById(R.id.calculate_disc);
         mCalculate.setEnabled(false);
         mReset = (Button)v.findViewById(R.id.reset_disc);
@@ -50,6 +51,8 @@ public class Tab2Fragment extends Fragment {
         mDiscountView = (EditText)v.findViewById(R.id.discount_pct_value);
         mAfterDiscount = (TextView)v.findViewById(R.id.total_value);
         mSaved = (TextView)v.findViewById(R.id.saved_value);
+        mTaxPct = (TextView)v.findViewById(R.id.tax_pct);
+        mTaxValue = (TextView)v.findViewById(R.id.tax_value);
 
         mOriginalPriceView.addTextChangedListener(myTextWatcher);
         mDiscountView.addTextChangedListener(myTextWatcher);
@@ -57,14 +60,8 @@ public class Tab2Fragment extends Fragment {
         mDiscountView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if (i == EditorInfo.IME_ACTION_DONE) {
-                    mCalculate.performClick();/*
-                    if (mDiscountView.getText().length() != 0) {
-                        InputMethodManager inputManager = (InputMethodManager) inflater.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                        return true;
-                    }*/
-                }
+                if (i == EditorInfo.IME_ACTION_DONE)
+                    mCalculate.performClick();
                 return false;
             }
         });
@@ -85,8 +82,12 @@ public class Tab2Fragment extends Fragment {
 
                 double originalPrice = Double.parseDouble(mOriginalPriceView.getText().toString());
                 double discount = Double.parseDouble(mDiscountView.getText().toString());
+                double taxPct = Double.parseDouble(mTaxPct.getText().toString());
                 double save = originalPrice * (discount / 100);
                 double finalPrice = originalPrice * ((100-discount) / 100);
+                double tax = finalPrice * (taxPct / 100);
+                finalPrice += tax;
+                mTaxValue.setText("$"+String.format("%.2f", tax));
                 mSaved.setText("$"+String.format("%.2f", save));
                 mAfterDiscount.setText("$"+String.format("%.2f" ,finalPrice));
             }
@@ -102,8 +103,18 @@ public class Tab2Fragment extends Fragment {
                 Toast.makeText(view.getContext(), "Values has been reset", 3).show();
             }
         });
-
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mTaxPct.setText(String.valueOf(mBase.getObserver().getTax()));
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        mTaxPct.setText(String.valueOf(mBase.getObserver().getTax()));
     }
 
     class MyTextWatcher implements TextWatcher {

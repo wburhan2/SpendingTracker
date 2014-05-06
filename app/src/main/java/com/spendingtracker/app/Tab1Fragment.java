@@ -32,13 +32,6 @@ public class Tab1Fragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
         if (container == null) {
-            // We have different layouts, and in one of them this
-            // fragment's containing frame doesn't exist.  The fragment
-            // may still be created from its saved state, but there is
-            // no reason to try to create its view hierarchy because it
-            // won't be displayed.  Note this is not needed -- we could
-            // just run the code below, where we would create and return
-            // the view hierarchy; it would just never be used.
             return null;
         }
 
@@ -85,9 +78,7 @@ public class Tab1Fragment extends Fragment {
 
                 double costValue = Double.parseDouble(mCost.getText().toString());
                 double tipValue = Double.parseDouble(mTip.getText().toString());
-
                 double tipMoney = costValue * (tipValue/100);
-
                 double totalCost = costValue + tipMoney;
 
                 mTipTextView.setText("$"+String.format("%.2f" ,tipMoney));

@@ -76,44 +76,41 @@
         android:background="@color/white"
         android:layout_below="@id/discount_pct"/>
 
-    <TextView
-        android:id="@+id/final_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Subtotal: "
-        android:textSize="@dimen/text_size"
-        android:layout_below="@id/disc_line"
-        android:layout_marginTop="@dimen/tip_cost_margin"/>
 
-    <TextView
-        android:id="@+id/total_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
-        android:layout_toRightOf="@id/final_price"
-        android:layout_alignBaseline="@id/final_price"
-        android:layout_alignRight="@id/disc_line"
-        android:freezesText="true"
-        android:gravity="right"/>
 
     <TextView
         android:id="@+id/tax"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/final_price"
+        android:layout_below="@id/disc_line"
         android:textSize="@dimen/text_size"
         android:text="Tax"
         android:layout_marginTop="@dimen/tip_cost_margin"/>
     <TextView
-        android:id="@+id/tax_pct"
+        android:id="@+id/p"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/tax"
         android:textSize="@dimen/text_size"
-        android:text="(0%)"
+        android:text="("
         android:layout_alignBaseline="@id/tax"
-        android:layout_marginLeft="@dimen/tip_cost_margin"
+        android:layout_marginLeft="@dimen/tip_cost_margin"/>
+    <TextView
+        android:id="@+id/tax_pct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/p"
+        android:textSize="@dimen/text_size"
+        android:text="0"
+        android:layout_alignBaseline="@id/tax"
         android:freezesText="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tax_pct"
+        android:textSize="@dimen/text_size"
+        android:text="%)"
+        android:layout_alignBaseline="@id/tax"/>
     <TextView
         android:id="@+id/tax_value"
         android:layout_width="wrap_content"
@@ -124,12 +121,33 @@
         android:text="$0.00"
         android:gravity="right"
         android:freezesText="true"/>
+
+    <TextView
+        android:id="@+id/final_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subtotal: "
+        android:textSize="@dimen/text_size"
+        android:layout_below="@id/tax"
+        android:layout_marginTop="@dimen/tip_cost_margin"/>
+
+    <TextView
+        android:id="@+id/total_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/red"
+        android:layout_toRightOf="@id/final_price"
+        android:layout_alignBaseline="@id/final_price"
+        android:layout_alignRight="@id/disc_line"
+        android:freezesText="true"
+        android:gravity="right"/>
     <View
         android:id="@+id/line"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@color/white"
-        android:layout_below="@id/tax"
+        android:layout_below="@id/final_price"
         android:layout_marginTop="@dimen/most_margin"/>
 
     <TextView
@@ -146,7 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
-        android:textColor="@color/red"
+        android:textColor="@color/magenta"
         android:layout_toRightOf="@id/saved"
         android:layout_alignBaseline="@id/saved"
         android:freezesText="true"
