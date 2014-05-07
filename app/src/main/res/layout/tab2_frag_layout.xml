@@ -95,7 +95,7 @@
         android:textSize="@dimen/text_size"
         android:text="("
         android:layout_alignBaseline="@id/tax"
-        android:layout_marginLeft="@dimen/tip_cost_margin"/>
+        android:layout_marginLeft="10dp"/>
     <TextView
         android:id="@+id/tax_pct"
         android:layout_width="wrap_content"
