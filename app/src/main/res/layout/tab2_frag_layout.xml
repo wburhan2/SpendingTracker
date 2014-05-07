@@ -56,7 +56,8 @@
         android:textSize="@dimen/text_size"
         android:id="@+id/discount_pct_value"
         android:layout_toLeftOf="@+id/pct"
-        android:layout_alignBaseline="@id/discount_pct"/>
+        android:layout_alignBaseline="@id/discount_pct"
+        android:imeOptions="actionDone"/>
 
     <TextView
         android:id="@+id/pct"

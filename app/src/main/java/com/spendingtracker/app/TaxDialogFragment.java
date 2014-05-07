@@ -20,6 +20,7 @@ import java.util.Observer;
 public class TaxDialogFragment extends DialogFragment implements Observer{
 
     BaseApp mBase;
+    EditText mTax;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,13 +29,13 @@ public class TaxDialogFragment extends DialogFragment implements Observer{
         mBase.getObserver().addObserver(this);
 
         Button okButton = (Button)view.findViewById(R.id.ok_button);
-        final EditText tax = (EditText)view.findViewById(R.id.federal_tax);
+        mTax = (EditText)view.findViewById(R.id.federal_tax);
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tax.getText() == null)
+                if (mTax.getText() == null)
                     return;
-                String taxText = tax.getText().toString();
+                String taxText = mTax.getText().toString();
 
                 if (taxText.isEmpty())
                     dismiss();
@@ -53,12 +54,11 @@ public class TaxDialogFragment extends DialogFragment implements Observer{
 
         Dialog dialog = getDialog();
         dialog.setTitle("Set Sales Tax");
-
         return view;
     }
 
     @Override
     public void update(Observable observable, Object o) {
-
+        mTax.setText(String.valueOf(mBase.getObserver().getTax()));
     }
 }

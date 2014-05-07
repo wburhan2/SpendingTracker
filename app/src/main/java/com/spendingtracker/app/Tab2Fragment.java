@@ -100,6 +100,7 @@ public class Tab2Fragment extends Fragment implements Observer{
                 mDiscountView.setText("");
                 mAfterDiscount.setText("");
                 mSaved.setText("");
+                mTaxValue.setText("$0.00");
                 Toast.makeText(view.getContext(), "Values has been reset", 3).show();
             }
         });
@@ -107,14 +108,9 @@ public class Tab2Fragment extends Fragment implements Observer{
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        mTaxPct.setText(String.valueOf(mBase.getObserver().getTax()));
-    }
-
-    @Override
     public void update(Observable observable, Object o) {
         mTaxPct.setText(String.valueOf(mBase.getObserver().getTax()));
+        mCalculate.performClick();
     }
 
     class MyTextWatcher implements TextWatcher {
