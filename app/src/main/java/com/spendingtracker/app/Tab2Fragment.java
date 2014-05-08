@@ -1,6 +1,5 @@
 package com.spendingtracker.app;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -10,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -69,7 +67,7 @@ public class Tab2Fragment extends Fragment implements Observer{
         mCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mOriginalPriceView.getText() == null || mDiscountView.getText() == null)
+                if (mOriginalPriceView.getText() == null || mDiscountView.getText() == null || mTaxPct.getText() == null)
                     return;
                 String originalPriceText = mOriginalPriceView.getText().toString();
                 String discountText = mDiscountView.getText().toString();

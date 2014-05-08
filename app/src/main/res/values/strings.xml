@@ -13,9 +13,5 @@
                         3. The reset button is to reset the corresponding value of tab the reset button was clicked.\n\n
                         4. The \'i\' button on the top left corner sets the sales tax of for the discount tab.\n\n\n
                         Finally, but not least.. Any advise to make the app even better is always welcome! :) </string>
-    <string-array name="setting_array">
-        <item>About</item>
-        <item>Feedback</item>
-        <item>Help</item>
-    </string-array>
+    <string name="Ok">Ok</string>
 </resources>

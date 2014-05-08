@@ -65,7 +65,6 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size"
         android:text="%"
-        android:layout_below="@id/original_price"
         android:layout_alignRight="@+id/disc_line"
         android:layout_alignBaseline="@id/discount_pct"
         android:gravity="right"/>
@@ -76,8 +75,6 @@
         android:layout_height="1dp"
         android:background="@color/white"
         android:layout_below="@id/discount_pct"/>
-
-
 
     <TextView
         android:id="@+id/tax"
