@@ -106,6 +106,12 @@ public class Tab2Fragment extends Fragment implements Observer{
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mTaxPct.setText(String.valueOf(mBase.getObserver().getTax()));
+    }
+
+    @Override
     public void update(Observable observable, Object o) {
         mTaxPct.setText(String.valueOf(mBase.getObserver().getTax()));
         mCalculate.performClick();

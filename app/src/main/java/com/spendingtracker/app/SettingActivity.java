@@ -11,6 +11,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import org.apache.http.protocol.HTTP;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,7 +62,7 @@ public class SettingActivity extends FragmentActivity {
             switch (i){
                 case FEEDBACK:
                     Intent email = new Intent(Intent.ACTION_SENDTO);
-                    email.setType("text/plain");
+                    email.setType(HTTP.PLAIN_TEXT_TYPE);
                     email.setData(Uri.parse("mailto:wilson.burhan@gmail.com"));
                     email.putExtra(Intent.EXTRA_SUBJECT, "Spending Tracker Feedback");
                     try {
