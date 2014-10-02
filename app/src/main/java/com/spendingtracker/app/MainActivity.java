@@ -10,6 +10,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
+
+import com.ironsource.mobilcore.CallbackResponse;
+import com.ironsource.mobilcore.MobileCore;
+
 import java.util.HashMap;
 
 public class MainActivity extends FragmentActivity {
@@ -27,6 +31,8 @@ public class MainActivity extends FragmentActivity {
 
         initialiseTabHost(savedInstanceState);
         initializeImageView();
+
+        MobileCore.init(this,"2K3GZ5GPPKNGFNRAI4FA39AOKQSMU", MobileCore.LOG_TYPE.PRODUCTION, MobileCore.AD_UNITS.OFFERWALL);
 
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab")); //set the tab as per the saved state
@@ -122,6 +128,21 @@ public class MainActivity extends FragmentActivity {
             v.setMinimumWidth(0);
             v.setMinimumHeight(0);
             return v;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0 && MobileCore.isOfferwallReady()) {
+            MobileCore.showOfferWall(this, new CallbackResponse() {
+                @Override
+                public void onConfirmation(CallbackResponse.TYPE type)
+                {
+                    finish();
+                }});
+        }
+        else {
+            super.onBackPressed();
         }
     }
 

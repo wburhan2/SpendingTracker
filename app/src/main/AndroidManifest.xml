@@ -3,6 +3,9 @@
     package="com.spendingtracker.app"
     android:installLocation="auto">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name="BaseApp"
         android:allowBackup="true"
@@ -25,5 +28,7 @@
             android:theme="@style/SettingTheme"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
+        <service android:name="com.ironsource.mobilcore.MobileCoreReport" android:enabled="true" android:exported="false" android:process=":mcServiceProcess"> </service>
+        <receiver android:name="com.ironsource.mobilcore.InstallationTracker" android:enabled="true" android:process=":installationTracker"> </receiver>
     </application>
 </manifest>
