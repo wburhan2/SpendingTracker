@@ -1,6 +1,8 @@
 package com.spendingtracker.app;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -45,6 +47,11 @@ public class Tab1Fragment extends Fragment {
         mCalculate.setEnabled(false);
         mCost = (EditText)v.findViewById(R.id.cost_value);
         mTip = (EditText)v.findViewById(R.id.tip_pct_value);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO && android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            mCost.setTextColor(Color.BLACK);
+            mTip.setTextColor(Color.BLACK);
+        }
 
         mCost.addTextChangedListener(myTextWatcher);
         mTip.addTextChangedListener(myTextWatcher);
@@ -93,7 +100,7 @@ public class Tab1Fragment extends Fragment {
                 mTip.setText("");
                 mTipTextView.setText("");
                 mTotalTextView.setText("");
-                Toast.makeText(view.getContext(), "Values has been reset", 3).show();
+                Toast.makeText(view.getContext(), "Values has been reset", Toast.LENGTH_SHORT).show();
             }
         });
 

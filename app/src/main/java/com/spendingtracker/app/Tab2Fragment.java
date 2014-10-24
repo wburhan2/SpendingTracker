@@ -1,5 +1,7 @@
 package com.spendingtracker.app;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -55,6 +57,11 @@ public class Tab2Fragment extends Fragment implements Observer{
         mOriginalPriceView.addTextChangedListener(myTextWatcher);
         mDiscountView.addTextChangedListener(myTextWatcher);
 
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO && android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            mDiscountView.setTextColor(Color.BLACK);
+            mOriginalPriceView.setTextColor(Color.BLACK);
+        }
+
         mDiscountView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -99,7 +106,7 @@ public class Tab2Fragment extends Fragment implements Observer{
                 mAfterDiscount.setText("");
                 mSaved.setText("");
                 mTaxValue.setText("$0.00");
-                Toast.makeText(view.getContext(), "Values has been reset", 3).show();
+                Toast.makeText(view.getContext(), "Values has been reset", Toast.LENGTH_LONG).show();
             }
         });
         return v;
