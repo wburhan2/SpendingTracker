@@ -48,11 +48,6 @@ public class Tab1Fragment extends Fragment {
         mCost = (EditText)v.findViewById(R.id.cost_value);
         mTip = (EditText)v.findViewById(R.id.tip_pct_value);
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO && android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            mCost.setTextColor(Color.BLACK);
-            mTip.setTextColor(Color.BLACK);
-        }
-
         mCost.addTextChangedListener(myTextWatcher);
         mTip.addTextChangedListener(myTextWatcher);
         mTip.setOnEditorActionListener(new TextView.OnEditorActionListener() {
